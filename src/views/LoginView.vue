@@ -1,25 +1,24 @@
 <template>
   <div>
-    <v-card
-      class="mx-auto pa-12 pb-8 mt-16"
-      elevation="8"
-      max-width="448"
-      rounded="lg"
-    >
+    <v-card class="mx-auto pa-12 pb-8 mt-16" max-width="448" rounded="lg" flat>
       <img src="../assets/image/ttlab-logo.svg" alt="" />
 
       <p class="text-title mt-4">Đăng nhập</p>
 
-      <div class="text-left text-medium-emphasis text-email">Email</div>
+      <div
+        class="text-left text-medium-emphasis mb-1 font-weight-bold text-email"
+      >
+        Email
+      </div>
 
       <v-text-field
         density="compact"
-        placeholder="Email address"
+        placeholder="Nhập email"
         variant="outlined"
       ></v-text-field>
 
       <div
-        class="text-email text-medium-emphasis d-flex align-center justify-space-between"
+        class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between"
       >
         Mật khẩu
 
@@ -34,16 +33,16 @@
       </div>
 
       <v-text-field
-        :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+        :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
         :type="visible ? 'text' : 'password'"
         density="compact"
-        placeholder="Enter your password"
+        placeholder="************"
         variant="outlined"
         @click:append-inner="visible = !visible"
       ></v-text-field>
 
       <v-row>
-        <v-checkbox label="Ghi nhớ đăng nhập"></v-checkbox>
+        <v-checkbox label="Ghi nhớ Đăng nhập"></v-checkbox>
         <p class="forgot-pass mt-4 mr-4">Quên mật khẩu?</p>
       </v-row>
 
@@ -57,11 +56,12 @@
 
       <v-btn
         block
-        class="mb-4 text-capitalize text-login"
+        class="mb-4 text-login text-lowercase"
         color="primary"
         size="large"
       >
-        Đăng nhập
+        <p class="text-uppercase">Đ</p>
+        ăng nhập
       </v-btn>
 
       <v-card-text class="text-center ml-10" style="display: flex">
