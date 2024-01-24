@@ -1,46 +1,10 @@
 <template>
   <div>
-    <!-- <header-page /> -->
-    <!-- <v-container> -->
-    <!-- <v-row class="navbar">
-        <img class="logo" src="./assets/image/Logo.png" />
-        <router-link to="/" class="text-decoration-none text-laptop"
-          >Laptops</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-desktop"
-          >Desktop PCs</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-network"
-          >Networking Devices</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-printer"
-          >Printers & Scanners</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-pc"
-          >PC Parts</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-all"
-          >All Other Products</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-repair"
-          >Repairs</router-link
-        >
-        <router-link to="/about" class="text-decoration-none text-repair"
-          >Other Deal</router-link
-        >
-      </v-row> -->
-
-    <!-- <img class="banner" src="./assets/image/Banner.png" alt="" /> -->
     <router-view />
-    <!-- </v-container> -->
   </div>
 </template>
 
 <script>
-// import HeaderPage from "./components/HeaderPage.vue";
-// export default {
-//   components: { HeaderPage },
-// };
 </script>
 
 <style>

@@ -47,7 +47,12 @@
           single-line
           class="bg-white"
           hide-details
-          style="margin-bottom: 16px"
+          style="
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid rgb(231, 231, 231);
+          "
+          flat
           @click:append-inner="onClick"
         ></v-text-field>
 
@@ -58,14 +63,6 @@
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
-        <!-- <v-text-field
-          density="compact"
-          placeholder="Nhập giá sản phẩm"
-          variant="outlined"
-          hide-details
-          class="bg-white"
-          style="margin-bottom: 16px"
-        ></v-text-field> -->
         <v-text-field
           :loading="loading"
           density="compact"
@@ -74,7 +71,12 @@
           single-line
           class="bg-white"
           hide-details
-          style="margin-bottom: 16px"
+          flat
+          style="
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid rgb(231, 231, 231);
+          "
           @click:append-inner="onClick"
         ></v-text-field>
 
@@ -85,14 +87,6 @@
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
-        <!-- <v-text-field
-          density="compact"
-          placeholder="Nhập số lượng sản phẩm"
-          variant="outlined"
-          hide-details
-          class="bg-white"
-          style="margin-bottom: 16px"
-        ></v-text-field> -->
         <v-text-field
           :loading="loading"
           density="compact"
@@ -100,8 +94,13 @@
           label="Nhập số lượng sản phẩm"
           single-line
           class="bg-white"
+          flat
           hide-details
-          style="margin-bottom: 16px"
+          style="
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid rgb(231, 231, 231);
+          "
           @click:append-inner="onClick"
         ></v-text-field>
 
@@ -110,46 +109,31 @@
         >
           Mô tả
         </div>
-
-        <!-- <v-textarea
-          label=""
-          placeholder="Nhập mô tả"
-          variant="outlined"
-          hide-details
-          class="bg-white"
-          style="margin-bottom: 16px"
-        ></v-textarea> -->
-
         <v-textarea
           label="Nhập mô tả"
           variant="solo"
           placeholder="Nhập mô tả"
+          single-line
+          flat
         ></v-textarea>
 
         <div
-          class="text-subtitle-1 text-medium-emphasis text-[14px] d-flex align-center"
+          class="text-subtitle-1 text-medium-emphasis text-[14px] d-flex align-center font-weight-bold"
         >
           Ảnh sản phẩm
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
-        <!-- <v-text-field
-          density="compact"
-          placeholder="Nhập link ảnh sản phẩm"
-          variant="outlined"
-          hide-details
-          class="bg-white"
-          style="margin-bottom: 16px; border: none"
-        ></v-text-field> -->
         <v-text-field
           :loading="loading"
           density="compact"
           variant="solo"
           label="Nhập ảnh sản phẩm"
           single-line
-          class="bg-white"
+          class="bg-white mb-3"
           hide-details
-          style="margin-bottom: 16px"
+          flat
+          style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
           @click:append-inner="onClick"
         ></v-text-field>
 
@@ -157,7 +141,7 @@
       </div>
       <v-row
         style="
-          padding-top: 15px;
+          padding-top: 8px;
           background-color: white;
           width: 448px;
           margin-left: 0.5px;
@@ -168,11 +152,18 @@
         <v-col cols="6"
           ><v-btn
             width="70"
+            flat
             class="text-capitalize mr-4"
             @click="this.$emit('close')"
+            style="border-radius: 6px; border: 1px solid rgb(222, 222, 222)"
             >Hủy</v-btn
           >
-          <v-btn width="105" color="#0f60ff" class="text-capitalize"
+          <v-btn
+            width="105"
+            color="#0f60ff"
+            class="text-capitalize"
+            flat
+            style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
             >Tạo
             <p class="text-lowercase">mới</p>
           </v-btn></v-col

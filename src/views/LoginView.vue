@@ -42,7 +42,10 @@
       ></v-text-field>
 
       <v-row>
-        <v-checkbox label="Ghi nhớ Đăng nhập"></v-checkbox>
+        <v-checkbox
+          label="Ghi nhớ Đăng nhập"
+          class="font-weight-bold text-[10px]"
+        ></v-checkbox>
         <p class="forgot-pass mt-4 mr-4">Quên mật khẩu?</p>
       </v-row>
 

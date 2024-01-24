@@ -29,7 +29,7 @@ const routes = [
     {
         path: "/addnew",
         name: "addnew",
-        component: () => import("../views/AddNew.vue"),
+        component: () => import("../components/AddNew.vue"),
     },
 ];
 
