@@ -36,7 +36,7 @@
         :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
         :type="visible ? 'text' : 'password'"
         density="compact"
-        placeholder="************"
+        placeholder="••••••••••••••"
         variant="outlined"
         @click:append-inner="visible = !visible"
       ></v-text-field>

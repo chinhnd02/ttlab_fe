@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" style="background-color: #f7f7f7">
     <v-navigation-drawer v-model="drawer">
       <!-- 
        -->
@@ -28,7 +28,7 @@
       >
     </v-navigation-drawer>
 
-    <v-app-bar flat>
+    <v-app-bar flat style="background-color: #f7f7f7">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title class="text-left">Danh sách sản phẩm</v-app-bar-title>
 
@@ -61,18 +61,30 @@
       </v-badge> -->
     </v-app-bar>
     <!-- style="background-color: #f7f7f7" -->
-    <v-main class="custom-main ml-6">
+    <v-main class="custom-main ml-6" style="background-color: #f7f7f7">
       <!--  -->
       <v-row>
         <v-col cols="4" class="mt-4">
           <v-text-field
-            class="search_input"
+            :loading="loading"
+            density="compact"
+            variant="solo"
+            label="Tìm kiếm"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+            @click:append-inner="onClick"
+          ></v-text-field>
+          <!-- <v-text-field
+            class="search_input bg-white"
             v-model="message"
             density="compact"
             clearable
             label="Tìm kiếm"
+            hide-details
             type="text"
-            variant="outlined"
+            variant="solo"
+            style="display: block"
           >
             <template v-slot:append-inner>
               <v-fade-transition leave-absolute>
@@ -111,16 +123,21 @@
                 </v-card>
               </v-menu>
             </template>
-          </v-text-field>
+          </v-text-field> -->
         </v-col>
         <v-col class="text-right mr-4 mt-5">
-          <v-btn class="text-capitalize" color="primary">+ Tạo mới</v-btn>
+          <v-btn
+            class="text-capitalize"
+            color="primary"
+            @click="dialogAdd = true"
+            >+ Tạo mới</v-btn
+          >
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row class="mr-2">
         <v-col cols="12">
-          <v-table>
+          <v-table style="border-radius: 12px 12px 0 0">
             <thead>
               <tr>
                 <th colspan="2" class="text-table text-uppercase">
@@ -134,7 +151,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, i) in 8" :key="i">
+              <tr v-for="(item, i) in 7" :key="i">
                 <td colspan="2" class="text-left">Sản phẩm {{ ++i }}</td>
                 <td class="text-left">$6.000</td>
                 <td class="text-left">1</td>
@@ -164,44 +181,59 @@
         <!-- <v-data-table :items="items"></v-data-table>
          -->
       </v-row>
-      <v-row>
-        <v-col cols="8" class="mt-7">
-          <v-row>
-            <p class="mt-5 showing">Showing</p>
-            <v-col cols="2">
-              <v-select
-                density="compact"
-                label="--"
-                :items="['10', '20', '30', '40', '50', '60']"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-            <p class="mt-5 showing">of 50</p>
-          </v-row>
-        </v-col>
-        <v-col cols="4" class="text-right">
-          <v-pagination
-            active-color="#0F60FF"
-            v-model="page"
-            :length="4"
-            color="#F1F2F6"
-            variant="elevated"
-            density="compact"
-          ></v-pagination>
-        </v-col>
-      </v-row>
+      <div
+        style="background-color: white; border-radius: 0 0 12px 12px"
+        class="mr-5 mb-10"
+      >
+        <v-row>
+          <v-col cols="8" class="mt-7">
+            <v-row>
+              <p class="mt-5 ml-6 showing">Showing</p>
+              <v-col cols="2">
+                <!-- <v-select
+                  density="compact"
+                  label="--"
+                  :items="['10', '20', '30', '40', '50', '60']"
+                  variant="outlined"
+                ></v-select> -->
+                <v-select
+                  :items="['10', '20']"
+                  density="compact"
+                  label=""
+                  variant="solo"
+                ></v-select>
+              </v-col>
+              <p class="mt-5 showing">of 50</p>
+            </v-row>
+          </v-col>
+          <v-col cols="4" class="text-right">
+            <v-pagination
+              active-color="#0F60FF"
+              v-model="page"
+              :length="4"
+              color="#F1F2F6"
+              variant="elevated"
+              density="compact"
+            ></v-pagination>
+          </v-col>
+        </v-row>
+      </div>
     </v-main>
+
+    <add-new :dialogAdd="dialogAdd" @close="dialogAdd = false" />
   </v-app>
 </template>
     
     <script setup>
 import { ref } from "vue";
+import AddNew from "./AddNew.vue";
 
 const drawer = ref(null);
 </script>
     
     <script>
 export default {
+  components: { AddNew },
   // data: () => ({ drawer: null, page: 1 }),
   // methods: {
 
@@ -209,6 +241,8 @@ export default {
   data() {
     return {
       drawer: null,
+      dialogAdd: false,
+      page: 1,
     };
   },
   methods: {},
