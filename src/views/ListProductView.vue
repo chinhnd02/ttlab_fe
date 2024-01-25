@@ -4,9 +4,10 @@
       <div class="headerPage">
         <div style="box-shadow: 1px 5px 8px #888888; border-radius: 6px">
           <v-row>
-            <v-col cols="2">
+            <v-col cols="2" class="ml-5">
               <v-select
                 width="136"
+                class="text-uppercase"
                 label="Sort by"
                 density="compact"
                 :items="[
@@ -50,7 +51,7 @@
                 variant="outlined"
               ></v-select>
             </v-col>
-            <v-col class="py-2">
+            <v-col class="py-2 mt-2">
               <v-btn-toggle v-model="text" rounded="0" color="#FFFFFF" group>
                 <v-btn
                   style="font-size: 14px; border-radius: 2px"
@@ -92,7 +93,7 @@
                 </v-btn>
               </v-btn-toggle>
             </v-col>
-            <v-col cols="2">
+            <v-col cols="2" class="mt-1 mr-2">
               <v-btn-toggle v-model="options" rounded="0" color="#FFFFFF" group>
                 <v-btn
                   style="font-size: 14px; border-radius: 2px"
@@ -107,7 +108,7 @@
 
                 <v-btn
                   style="font-size: 14px; border-radius: 2px"
-                  class="text-capitalize"
+                  class="text-capitalize mr-3"
                   height="36"
                   width="85"
                   color="white"
@@ -121,7 +122,7 @@
           </v-row>
           <v-row>
             <p
-              class="mr-5 ml-4"
+              class="mr-5 ml-8"
               style="line-height: 46px; font-weight: 600; font-size: 14px"
             >
               Related
@@ -408,7 +409,7 @@ export default {
   color: #2264d1;
 }
 .not_highlight {
-  background: #f7f7f7;
+  background: #ebf2ff;
   color: #5a5b6a;
 }
 .item {
