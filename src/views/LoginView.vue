@@ -1,81 +1,111 @@
 <template>
   <div>
-    <v-card class="mx-auto pa-12 pb-8 mt-16" max-width="448" rounded="lg" flat>
-      <img src="../assets/image/ttlab-logo.svg" alt="" />
-
-      <p class="text-title mt-4">Đăng nhập</p>
-
-      <div
-        class="text-left text-medium-emphasis mb-1 font-weight-bold text-email"
+    <form action="" @submit="onSubmit">
+      <v-card
+        class="mx-auto pa-10 pb-7 mt-16"
+        max-width="448"
+        rounded="lg"
+        flat
       >
-        Email
-      </div>
+        <img src="../assets/image/ttlab-logo.svg" alt="" />
 
-      <v-text-field
-        density="compact"
-        placeholder="Nhập email"
-        variant="outlined"
-      ></v-text-field>
+        <p class="text-title mt-4">Đăng nhập</p>
 
-      <div
-        class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between"
-      >
-        Mật khẩu
-
-        <!-- <a
-          class="text-caption text-decoration-none text-blue"
-          href="#"
-          rel="noopener noreferrer"
-          target="_blank"
+        <div
+          class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between"
         >
-          Forgot login password?</a
-        > -->
-      </div>
+          Email
+        </div>
 
-      <v-text-field
-        :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="visible ? 'text' : 'password'"
-        density="compact"
-        placeholder="••••••••••••••"
-        variant="outlined"
-        @click:append-inner="visible = !visible"
-      ></v-text-field>
+        <v-text-field
+          density="compact"
+          placeholder="Nhập email"
+          variant="outlined"
+          type="email"
+          v-model="email"
+          v-bind="emailAttrs"
+          single-line
+          hide-details
+        >
+        </v-text-field>
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: left"
+          >{{ errors.email }}</span
+        >
 
-      <v-row>
-        <v-checkbox
-          label="Ghi nhớ Đăng nhập"
-          class="font-weight-bold text-[10px]"
-        ></v-checkbox>
-        <p class="forgot-pass mt-4 mr-4">Quên mật khẩu?</p>
-      </v-row>
+        <div
+          class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between mt-6"
+        >
+          Mật khẩu
+        </div>
 
-      <!-- <v-card class="mb-12" color="surface-variant" variant="tonal">
-        <v-card-text class="text-medium-emphasis text-caption">
-          Warning: After 3 consecutive failed login attempts, you account will
-          be temporarily locked for three hours. If you must login now, you can
-          also click "Forgot login password?" below to reset the login password.
+        <v-text-field
+          :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="visible ? 'text' : 'password'"
+          density="compact"
+          placeholder="••••••••••••••"
+          variant="outlined"
+          v-model="password"
+          v-bind="passwordAttrs"
+          @click:append-inner="visible = !visible"
+          single-line
+          hide-details
+        ></v-text-field>
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: left"
+        >
+          {{ errors.password }}
+        </span>
+
+        <v-row class="mt-5">
+          <v-checkbox
+            label="Ghi nhớ Đăng nhập"
+            class="font-weight-bold"
+          ></v-checkbox>
+
+          <p class="forgot-pass mt-5 mr-4">Quên mật khẩu?</p>
+        </v-row>
+
+        <v-btn
+          block
+          class="mb-4 text-login text-lowercase"
+          color="primary"
+          size="large"
+        >
+          <p class="text-uppercase">Đ</p>
+          ăng nhập
+        </v-btn>
+
+        <v-card-text class="text-center ml-10" style="display: flex">
+          <!-- <v-row> -->
+          <p class="cctk">Bạn chưa có tài khoản?</p>
+          <p class="ml-2 register">Đăng ký</p>
+          <!-- </v-row> -->
         </v-card-text>
-      </v-card> -->
-
-      <v-btn
-        block
-        class="mb-4 text-login text-lowercase"
-        color="primary"
-        size="large"
-      >
-        <p class="text-uppercase">Đ</p>
-        ăng nhập
-      </v-btn>
-
-      <v-card-text class="text-center ml-10" style="display: flex">
-        <!-- <v-row> -->
-        <p class="cctk">Bạn chưa có tài khoản?</p>
-        <p class="ml-2 register">Đăng ký</p>
-        <!-- </v-row> -->
-      </v-card-text>
-    </v-card>
+      </v-card>
+    </form>
   </div>
 </template>
+
+<script setup>
+import { useForm } from "vee-validate";
+import * as yup from "yup";
+const { errors, handleSubmit, defineField } = useForm({
+  validationSchema: yup.object({
+    email: yup.string().email("Email không hợp lệ"),
+    password: yup.string().min(8, "Mật khẩu phải trên 8 kí tự"),
+  }),
+});
+
+const onSubmit = handleSubmit((values) => {
+  alert(JSON.stringify(values, null, 2));
+});
+
+const [email, emailAttrs] = defineField("email");
+const [password, passwordAttrs] = defineField("password");
+</script>
 
 <script>
 export default {

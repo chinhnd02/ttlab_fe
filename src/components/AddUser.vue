@@ -15,26 +15,26 @@
         class="text-left title-addnew"
       >
         <!-- <p
-          class="title-addnew"
-          style="font-weight: 500; padding: 17px 0 0 20px; color: #1a2240"
-        >
-          
-        </p> -->
-        Tạo mới sản phẩm
+            class="title-addnew"
+            style="font-weight: 500; padding: 17px 0 0 20px; color: #1a2240"
+          >
+            
+          </p> -->
+        Tạo mới người dùng
       </div>
       <div style="background-color: #f7f7f7; padding: 16px 20px">
         <div
           style="color: #464f60"
           class="font-weight-bold font-weight-medium text-medium-emphasis d-flex align-center text-name mb-2"
         >
-          Tên sản phẩm
+          Tên người dùng
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
         <v-text-field
           :loading="loading"
           density="compact"
           variant="solo"
-          label="Nhập tên sản phẩm"
+          label="Nhập tên người dùng"
           single-line
           class="bg-white"
           hide-details
@@ -50,7 +50,7 @@
         <div
           class="text-medium-emphasis d-flex align-center font-weight-bold text-name mb-2"
         >
-          Giá
+          Email
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
@@ -58,7 +58,7 @@
           :loading="loading"
           density="compact"
           variant="solo"
-          label="Nhập giá sản phẩm"
+          label="Nhập email"
           single-line
           class="bg-white"
           hide-details
@@ -74,11 +74,12 @@
         <div
           class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
         >
-          Số lượng
+          Ngày sinh
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
         <v-text-field
+          type="date"
           :loading="loading"
           density="compact"
           variant="solo"
@@ -98,23 +99,7 @@
         <div
           class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
         >
-          Mô tả
-        </div>
-        <v-textarea
-          label="Nhập mô tả"
-          variant="solo"
-          placeholder="Nhập mô tả"
-          single-line
-          class="text-area"
-          style=""
-          flat
-        ></v-textarea>
-        <!-- <v-textarea label="Label" variant="solo" flat single-line></v-textarea> -->
-
-        <div
-          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
-        >
-          Ảnh sản phẩm
+          Số điện thoại
           <p class="ml-1" style="color: #0f60ff">*</p>
         </div>
 
@@ -122,7 +107,28 @@
           :loading="loading"
           density="compact"
           variant="solo"
-          label="Nhập link ảnh sản phẩm"
+          label="Nhập số điện thoại"
+          single-line
+          class="bg-white mb-3"
+          hide-details
+          flat
+          style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
+          @click:append-inner="onClick"
+        ></v-text-field>
+        <!-- <v-textarea label="Label" variant="solo" flat single-line></v-textarea> -->
+
+        <div
+          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
+        >
+          Avartar
+          <p class="ml-1" style="color: #0f60ff">*</p>
+        </div>
+
+        <v-text-field
+          :loading="loading"
+          density="compact"
+          variant="solo"
+          label="Nhập link ảnh avartar"
           single-line
           class="bg-white mb-3"
           hide-details
@@ -166,8 +172,8 @@
     </v-dialog>
   </div>
 </template>
-
-<script>
+  
+  <script>
 export default {
   props: ["dialogAdd"],
   computed: {
@@ -184,8 +190,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@500&display=swap");
 .title-addnew {
   font-family: "Public Sans", sans-serif;
