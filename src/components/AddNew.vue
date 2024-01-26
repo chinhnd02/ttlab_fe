@@ -36,19 +36,22 @@
           variant="solo"
           label="Nhập tên sản phẩm"
           single-line
+          v-model="name"
+          v-bind="nameAttrs"
           class="bg-white"
           hide-details
-          style="
-            margin-bottom: 16px;
-            border-radius: 6px;
-            border: 1px solid rgb(231, 231, 231);
-          "
+          style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
           flat
           @click:append-inner="onClick"
         ></v-text-field>
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: right"
+          >{{ errors.name }}</span
+        >
 
         <div
-          class="text-medium-emphasis d-flex align-center font-weight-bold text-name mb-2"
+          class="text-medium-emphasis d-flex align-center font-weight-bold text-name mb-2 mt-4"
         >
           Giá
           <p class="ml-1" style="color: #0f60ff">*</p>
@@ -60,19 +63,23 @@
           variant="solo"
           label="Nhập giá sản phẩm"
           single-line
+          type="number"
           class="bg-white"
+          v-model="price"
+          v-bind="priceAttrs"
           hide-details
           flat
-          style="
-            margin-bottom: 16px;
-            border-radius: 6px;
-            border: 1px solid rgb(231, 231, 231);
-          "
+          style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
           @click:append-inner="onClick"
         ></v-text-field>
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: right"
+          >{{ errors.price }}</span
+        >
 
         <div
-          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
+          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2 mt-4"
         >
           Số lượng
           <p class="ml-1" style="color: #0f60ff">*</p>
@@ -86,17 +93,20 @@
           single-line
           class="bg-white"
           flat
+          v-model="quantity"
+          v-bind="quantityAttrs"
           hide-details
-          style="
-            margin-bottom: 16px;
-            border-radius: 6px;
-            border: 1px solid rgb(231, 231, 231);
-          "
+          style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
           @click:append-inner="onClick"
         ></v-text-field>
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: right"
+          >{{ errors.quantity }}</span
+        >
 
         <div
-          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2"
+          class="text-medium-emphasis text-[14px] d-flex align-center font-weight-bold text-name mb-2 mt-4"
         >
           Mô tả
         </div>
@@ -105,6 +115,8 @@
           variant="solo"
           placeholder="Nhập mô tả"
           single-line
+          v-bind="descriptionAttrs"
+          v-model="description"
           class="text-area"
           style="
             margin-bottom: 16px;
@@ -130,11 +142,19 @@
           label="Nhập link ảnh sản phẩm"
           single-line
           class="bg-white mb-3"
+          v-bind="imageAttrs"
+          v-model="image"
           hide-details
           flat
           style="border-radius: 6px; border: 1px solid rgb(231, 231, 231)"
           @click:append-inner="onClick"
         ></v-text-field>
+
+        <span
+          class="text-left"
+          style="color: red; font-size: 12px; float: right"
+          >{{ errors.image }}</span
+        >
 
         <!-- <v-card class="mb-12" color="surface-variant" variant="tonal"> </v-card> -->
       </div>
@@ -158,6 +178,7 @@
             >Hủy</v-btn
           >
           <v-btn
+            @click="onSubmit"
             width="105"
             color="#0f60ff"
             class="text-capitalize"
@@ -171,6 +192,30 @@
     </v-dialog>
   </div>
 </template>
+
+<script setup>
+import { useForm } from "vee-validate";
+import * as yup from "yup";
+const { errors, handleSubmit, defineField } = useForm({
+  validationSchema: yup.object({
+    name: yup.string().required("Không được để trống"),
+    price: yup.string().required("Không được để trống"),
+    quantity: yup.string().required("Không được để trống"),
+    description: yup.string().max(255),
+    image: yup.string().required("aalal"),
+  }),
+});
+
+const onSubmit = handleSubmit((values) => {
+  alert(JSON.stringify(values, null, 2));
+});
+
+const [name, nameAttrs] = defineField("name");
+const [price, priceAttrs] = defineField("price");
+const [quantity, quantityAttrs] = defineField("quantity");
+const [description, descriptionAttrs] = defineField("description");
+const [image, imageAttrs] = defineField("image");
+</script>
 
 <script>
 export default {

@@ -85,7 +85,6 @@
           variant="solo"
           single-line
           class="bg-white"
-          aria-placeholder="YYYY/MM/ĐD"
           flat
           hide-details
           style="
@@ -187,6 +186,9 @@ export default {
         }
       },
     },
+  },
+  data() {
+    return {};
   },
 };
 </script>

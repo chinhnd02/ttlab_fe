@@ -1,91 +1,81 @@
 <template>
   <div>
-    <form action="" @submit="onSubmit">
-      <v-card
-        class="mx-auto pa-10 pb-7 mt-16"
-        max-width="448"
-        rounded="lg"
-        flat
+    <v-card class="mx-auto pa-10 pb-7 mt-16" max-width="448" rounded="lg" flat>
+      <img src="../assets/image/ttlab-logo.svg" alt="" />
+
+      <p class="text-title mt-4">Đăng nhập</p>
+
+      <div
+        class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between"
       >
-        <img src="../assets/image/ttlab-logo.svg" alt="" />
+        Email
+      </div>
 
-        <p class="text-title mt-4">Đăng nhập</p>
+      <v-text-field
+        density="compact"
+        placeholder="Nhập email"
+        variant="outlined"
+        type="email"
+        v-model="email"
+        v-bind="emailAttrs"
+        single-line
+        hide-details
+      >
+      </v-text-field>
+      <span
+        class="text-left"
+        style="color: red; font-size: 12px; float: left"
+        >{{ errors.email }}</span
+      >
 
-        <div
-          class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between"
-        >
-          Email
-        </div>
+      <div
+        class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between mt-6"
+      >
+        Mật khẩu
+      </div>
 
-        <v-text-field
-          density="compact"
-          placeholder="Nhập email"
-          variant="outlined"
-          type="email"
-          v-model="email"
-          v-bind="emailAttrs"
-          single-line
-          hide-details
-        >
-        </v-text-field>
-        <span
-          class="text-left"
-          style="color: red; font-size: 12px; float: left"
-          >{{ errors.email }}</span
-        >
+      <v-text-field
+        :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="visible ? 'text' : 'password'"
+        density="compact"
+        placeholder="••••••••••••••"
+        variant="outlined"
+        v-model="password"
+        v-bind="passwordAttrs"
+        @click:append-inner="visible = !visible"
+        single-line
+        hide-details
+      ></v-text-field>
+      <span class="text-left" style="color: red; font-size: 12px; float: left">
+        {{ errors.password }}
+      </span>
 
-        <div
-          class="text-email text-medium-emphasis mb-1 font-weight-bold d-flex align-center justify-space-between mt-6"
-        >
-          Mật khẩu
-        </div>
+      <v-row class="mt-5">
+        <v-checkbox
+          label="Ghi nhớ Đăng nhập"
+          class="font-weight-bold"
+        ></v-checkbox>
 
-        <v-text-field
-          :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="visible ? 'text' : 'password'"
-          density="compact"
-          placeholder="••••••••••••••"
-          variant="outlined"
-          v-model="password"
-          v-bind="passwordAttrs"
-          @click:append-inner="visible = !visible"
-          single-line
-          hide-details
-        ></v-text-field>
-        <span
-          class="text-left"
-          style="color: red; font-size: 12px; float: left"
-        >
-          {{ errors.password }}
-        </span>
+        <p class="forgot-pass mt-5 mr-4">Quên mật khẩu?</p>
+      </v-row>
 
-        <v-row class="mt-5">
-          <v-checkbox
-            label="Ghi nhớ Đăng nhập"
-            class="font-weight-bold"
-          ></v-checkbox>
+      <v-btn
+        block
+        class="mb-4 text-login text-lowercase"
+        color="primary"
+        size="large"
+      >
+        <p class="text-uppercase" @click="onSubmit">Đ</p>
+        ăng nhập
+      </v-btn>
 
-          <p class="forgot-pass mt-5 mr-4">Quên mật khẩu?</p>
-        </v-row>
-
-        <v-btn
-          block
-          class="mb-4 text-login text-lowercase"
-          color="primary"
-          size="large"
-        >
-          <p class="text-uppercase">Đ</p>
-          ăng nhập
-        </v-btn>
-
-        <v-card-text class="text-center ml-10" style="display: flex">
-          <!-- <v-row> -->
-          <p class="cctk">Bạn chưa có tài khoản?</p>
-          <p class="ml-2 register">Đăng ký</p>
-          <!-- </v-row> -->
-        </v-card-text>
-      </v-card>
-    </form>
+      <v-card-text class="text-center ml-10" style="display: flex">
+        <!-- <v-row> -->
+        <p class="cctk">Bạn chưa có tài khoản?</p>
+        <p class="ml-2 register">Đăng ký</p>
+        <!-- </v-row> -->
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -97,11 +87,15 @@ const { errors, handleSubmit, defineField } = useForm({
     email: yup
       .string()
       .email("Email không hợp lệ")
-      .required("Không được để trống"),
+      .required("Không được để trống")
+      .max(50),
     password: yup
       .string()
       .min(8, "Mật khẩu phải trên 8 kí tự")
-      .required("Không được để trống"),
+      .required("Không được để trống")
+      .uppercase()
+      .lowercase()
+      .max(64),
   }),
 });
 
