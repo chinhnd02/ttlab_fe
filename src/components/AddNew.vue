@@ -106,8 +106,13 @@
           placeholder="Nhập mô tả"
           single-line
           class="text-area"
-          style=""
+          style="
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid rgb(231, 231, 231);
+          "
           flat
+          hide-details
         ></v-textarea>
         <!-- <v-textarea label="Label" variant="solo" flat single-line></v-textarea> -->
 

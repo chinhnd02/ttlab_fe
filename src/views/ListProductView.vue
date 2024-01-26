@@ -7,7 +7,7 @@
             <v-col cols="2" class="ml-5">
               <v-select
                 width="136"
-                class="text-uppercase"
+                class="text-uppercase text-subtitle-1"
                 label="Sort by"
                 density="compact"
                 :items="[

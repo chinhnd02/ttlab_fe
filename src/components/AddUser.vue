@@ -83,9 +83,9 @@
           :loading="loading"
           density="compact"
           variant="solo"
-          label="Nhập số lượng sản phẩm"
           single-line
           class="bg-white"
+          aria-placeholder="YYYY/MM/ĐD"
           flat
           hide-details
           style="

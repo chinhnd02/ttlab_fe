@@ -82,6 +82,7 @@
         <v-icon icon="mdi mdi-bell-outline"></v-icon>
         <!-- <img src="../assets/image/indent-decrease.png" alt=""> -->
       </v-badge>
+
       <v-badge
         class="ml-4 mr-4"
         offset-x="100%"
@@ -92,6 +93,7 @@
       >
         <v-avatar>
           <v-img
+            style="width: 38px; height: 38px"
             src="https://cdn.vuetifyjs.com/images/john.jpg"
             alt="John"
           ></v-img>
@@ -134,7 +136,8 @@
               <p class="mt-5 showing">of 50</p>
             </v-row>
           </v-col>
-          <v-col cols="5" class="text-right">
+          <v-col cols="1"></v-col>
+          <v-col cols="4">
             <!-- <v-pagination
               active-color="#0F60FF"
               v-model="page"
@@ -259,4 +262,21 @@ export default {
 .addmargin {
   margin-left: 14px;
 }
+
+/* .v-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.v-pagination > div {
+  margin: 0;
+  padding: 0;
+}
+
+.v-pagination__item {
+  margin: 0;
+  padding: 0;
+} */
 </style>
