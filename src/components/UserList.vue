@@ -92,7 +92,7 @@
                   alt=""
                 />
               </td>
-              <td class="text-left">Arlene McCoy</td>
+              <td class="text-left font-weight-bold">Arlene McCoy</td>
               <td class="text-left">georgia.young@example.com</td>
               <td class="text-left">1969/03/05</td>
               <td class="text-left">082-141-2567</td>

@@ -94,8 +94,14 @@ import { useForm } from "vee-validate";
 import * as yup from "yup";
 const { errors, handleSubmit, defineField } = useForm({
   validationSchema: yup.object({
-    email: yup.string().email("Email không hợp lệ"),
-    password: yup.string().min(8, "Mật khẩu phải trên 8 kí tự"),
+    email: yup
+      .string()
+      .email("Email không hợp lệ")
+      .required("Không được để trống"),
+    password: yup
+      .string()
+      .min(8, "Mật khẩu phải trên 8 kí tự")
+      .required("Không được để trống"),
   }),
 });
 
